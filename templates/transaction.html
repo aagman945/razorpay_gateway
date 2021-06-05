@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transaction</title>
+</head>
+<body>
+    <h1>Your transactions</h1>
+     
+        
+            {%for transaction in transaction%}
+                <div class="container border">
+                    <li>
+                    <ul>
+                            name: {{transaction.name}}
+                            <p> amount: {{transaction.amount}} (in paise)</p>
+                            order id : {{transaction.order_id}}
+                        
+                    </ul>
+                    </li>
+                </div>
+            {%endfor%} 
+        
+           
+</body>
+</html>

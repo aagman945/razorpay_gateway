@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>payment</h3>
+
+
+    
+   
+        {% if response %}
+        <div class="container center-align">
+            <form action="success" method="POST">
+                {% csrf_token %}
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="rzp_test_Avpc85IlnX6Ymx"
+                    data-amount={{response.amount}}
+                    data-currency={{response.currency}}
+                    data-order_id={{response.id}}
+                    data-buttontext="Pay with Razorpay"
+                    data-name="donation"
+                    data-description=""
+                    data-image=""
+                    data-prefill.name={{request.user.username}}
+                    data-prefill.email={{request.user.email}}
+                    data-theme.color="#F37254"
+                ></script>
+                <input type="hidden" custom="Hidden Element" name="hidden">
+                </form>
+        </div>        
+        {% else %}
+            <div class="container center-align">
+                <form method="POST" >
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-dark">submit</button>
+                </form>
+            </div>
+        {% endif %}    
+    
+</body>
+</html>
